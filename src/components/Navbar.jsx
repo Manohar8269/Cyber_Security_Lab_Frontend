@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Navbar.css";
-import { Link } from "react-router-dom";
+import { ShieldCheck } from "lucide-react";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -12,32 +12,36 @@ const Navbar = () => {
   return (
     <header className="navbar-wrapper">
       <nav className="navbar">
-        {/* Logo */}
+
+        {/* ================= LOGO ================= */}
         <a
           href="https://bytes-encrypt-uorw.vercel.app/"
           target="_blank"
           rel="noreferrer"
           className="navbar-logo"
         >
-          <span className="logo-bracket"></span>
-          BytesEncrypt
-          <span className="logo-bracket"></span>
+          <span className="logo-icon">
+            <ShieldCheck size={22} />
+            <span className="logo-glow"></span>
+          </span>
+
+          <span className="logo-text">BytesEncrypt</span>
         </a>
 
-        {/* Desktop Navigation */}
+        {/* ================= DESKTOP NAVIGATION ================= */}
         <div className="nav-links">
           <a href="#home">Home</a>
           <a href="#labs">Labs</a>
           <a href="#about">About Us</a>
         </div>
 
-        {/* Desktop Contact */}
+        {/* ================= DESKTOP CONTACT ================= */}
         <a href="#contact" className="contact-btn">
           <span>Contact</span>
           <span className="contact-arrow">↗</span>
         </a>
 
-        {/* Mobile Menu Button */}
+        {/* ================= MOBILE MENU BUTTON ================= */}
         <button
           className={`menu-toggle ${menuOpen ? "active" : ""}`}
           onClick={() => setMenuOpen(!menuOpen)}
@@ -50,7 +54,7 @@ const Navbar = () => {
         </button>
       </nav>
 
-      {/* Mobile Navigation */}
+      {/* ================= MOBILE NAVIGATION ================= */}
       <div className={`mobile-menu ${menuOpen ? "open" : ""}`}>
         <a href="#home" onClick={closeMenu}>
           Home
@@ -64,7 +68,11 @@ const Navbar = () => {
           About Us
         </a>
 
-        <a href="#contact" className="mobile-contact-btn" onClick={closeMenu}>
+        <a
+          href="#contact"
+          className="mobile-contact-btn"
+          onClick={closeMenu}
+        >
           Contact <span>↗</span>
         </a>
       </div>
