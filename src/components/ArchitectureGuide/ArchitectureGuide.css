@@ -1,0 +1,1092 @@
+/* =====================================================
+   ARCHITECTURE GUIDE
+===================================================== */
+
+.architecture-guide {
+  position: relative;
+
+  width: min(1400px, calc(100% - 40px));
+
+  margin: 32px auto 0;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  isolation: isolate;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(17, 20, 28, 0.97),
+      rgba(7, 9, 15, 0.99)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 20px 50px rgba(0, 0, 0, 0.24);
+
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+
+/* =====================================================
+   TOP GLOW
+===================================================== */
+
+.architecture-guide::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 8%;
+  right: 8%;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #00f5c8,
+      #527cff,
+      #a47dff,
+      transparent
+    );
+
+  opacity: 0.72;
+
+  pointer-events: none;
+}
+
+
+/* =====================================================
+   BOTTOM GLOW
+===================================================== */
+
+.architecture-guide::after {
+  content: "";
+
+  position: absolute;
+
+  left: 18%;
+  right: 18%;
+
+  bottom: -105px;
+
+  height: 145px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(0, 245, 200, 0.30),
+      rgba(82, 124, 255, 0.18),
+      transparent 72%
+    );
+
+  filter: blur(34px);
+
+  opacity: 0.75;
+
+  animation:
+    architecture-glow 5s ease-in-out infinite;
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.architecture-guide-header {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 58px;
+
+  padding:
+    0 20px;
+
+  border: none;
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.07);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(255, 255, 255, 0.018)
+    );
+
+  color:
+    var(--text-primary);
+
+  text-align: left;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+
+/* Header shine */
+
+.architecture-guide-header::before {
+  content: "";
+
+  position: absolute;
+
+  top: -100%;
+
+  left: -70%;
+
+  width: 35%;
+
+  height: 300%;
+
+  transform: rotate(20deg);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.08),
+      transparent
+    );
+
+  filter: blur(8px);
+
+  pointer-events: none;
+
+  transition: left 0.7s ease;
+}
+
+.architecture-guide-header:hover::before {
+  left: 145%;
+}
+
+
+.architecture-guide-header:hover {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 245, 200, 0.055),
+      rgba(255, 255, 255, 0.02)
+    );
+
+  border-bottom-color:
+    rgba(0, 245, 200, 0.13);
+}
+
+
+/* =====================================================
+   HEADER TITLE
+===================================================== */
+
+.architecture-guide-title {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  letter-spacing:
+    -0.01em;
+}
+
+
+/* =====================================================
+   ARROW
+===================================================== */
+
+.architecture-arrow {
+  flex-shrink: 0;
+
+  color:
+    var(--accent-cyan);
+
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+.architecture-arrow.open {
+  transform:
+    rotate(0deg);
+}
+
+.architecture-arrow:not(.open) {
+  transform:
+    rotate(-90deg);
+}
+
+
+/* =====================================================
+   INFO ICON
+===================================================== */
+
+.architecture-info-icon {
+  flex-shrink: 0;
+
+  color:
+    var(--accent-blue);
+
+  filter:
+    drop-shadow(
+      0 0 7px rgba(99, 179, 255, 0.20)
+    );
+}
+
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.architecture-guide-content {
+  position: relative;
+
+  padding:
+    32px 25px 34px;
+
+  animation:
+    architecture-content-in 0.35s ease;
+}
+
+@keyframes architecture-content-in {
+  from {
+    opacity: 0;
+    transform:
+      translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0);
+  }
+}
+
+
+/* =====================================================
+   CONTENT HEADING
+===================================================== */
+
+.architecture-guide-content h2 {
+  position: relative;
+
+  margin:
+    0 0 26px;
+
+  font-size:
+    clamp(28px, 3vw, 38px);
+
+  line-height: 1.08;
+
+  font-weight: 800;
+
+  letter-spacing:
+    -0.04em;
+
+  color:
+    var(--text-primary);
+}
+
+
+/* Accent line */
+
+.architecture-guide-content h2::after {
+  content: "";
+
+  display: block;
+
+  width: 70px;
+
+  height: 2px;
+
+  margin-top: 13px;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #00f5c8,
+      #527cff,
+      transparent
+    );
+
+  box-shadow:
+    0 0 12px rgba(0, 245, 200, 0.18);
+}
+
+
+/* =====================================================
+   POINTS
+===================================================== */
+
+.architecture-points {
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  gap:
+    14px;
+}
+
+
+/* =====================================================
+   POINT
+===================================================== */
+
+.architecture-point {
+  position: relative;
+
+  display:
+    flex;
+
+  align-items:
+    flex-start;
+
+  gap:
+    13px;
+
+  padding:
+    14px 16px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.06);
+
+  border-radius:
+    13px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.035),
+      rgba(255, 255, 255, 0.012)
+    );
+
+  overflow:
+    hidden;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+/* Point shine */
+
+.architecture-point::before {
+  content: "";
+
+  position: absolute;
+
+  top: -120%;
+  left: -65%;
+
+  width: 30%;
+  height: 330%;
+
+  transform: rotate(20deg);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.06),
+      transparent
+    );
+
+  filter: blur(8px);
+
+  pointer-events: none;
+
+  transition:
+    left 0.7s ease;
+}
+
+.architecture-point:hover::before {
+  left: 145%;
+}
+
+
+.architecture-point:hover {
+  transform:
+    translateY(-3px);
+
+  border-color:
+    rgba(0, 245, 200, 0.16);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 245, 200, 0.045),
+      rgba(255, 255, 255, 0.015)
+    );
+
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.20),
+    0 0 22px rgba(0, 245, 200, 0.04);
+}
+
+
+/* =====================================================
+   BULLET
+===================================================== */
+
+.architecture-bullet {
+  position: relative;
+
+  z-index: 2;
+
+  flex-shrink: 0;
+
+  width: 30px;
+
+  height: 30px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  margin-top: 1px;
+
+  border:
+    1px solid rgba(0, 245, 200, 0.16);
+
+  border-radius: 9px;
+
+  background:
+    rgba(0, 245, 200, 0.045);
+
+  color:
+    var(--accent-cyan);
+
+  font-size:
+    13px;
+
+  line-height:
+    1;
+
+  box-shadow:
+    0 0 15px rgba(0, 245, 200, 0.05);
+}
+
+
+/* =====================================================
+   POINT CONTENT
+===================================================== */
+
+.architecture-point-content {
+  position: relative;
+
+  z-index: 2;
+
+  flex: 1;
+}
+
+
+.architecture-point-content p {
+  margin: 0;
+
+  color:
+    rgba(255, 255, 255, 0.70);
+
+  font-size:
+    15px;
+
+  line-height:
+    1.75;
+}
+
+
+.architecture-point-content strong {
+  font-weight:
+    800;
+
+  color:
+    var(--text-primary);
+}
+
+
+/* =====================================================
+   TECH NAME
+===================================================== */
+
+.tech-name {
+  color:
+    #63b3ff;
+
+  font-weight:
+    700;
+
+  text-shadow:
+    0 0 14px rgba(99, 179, 255, 0.12);
+}
+
+
+/* =====================================================
+   CODE STYLE
+===================================================== */
+
+.architecture-point-content code {
+  display:
+    inline-block;
+
+  margin:
+    0 2px;
+
+  padding:
+    2px 7px;
+
+  border:
+    1px solid rgba(41, 216, 121, 0.15);
+
+  border-radius:
+    6px;
+
+  background:
+    rgba(41, 216, 121, 0.045);
+
+  color:
+    #29d879;
+
+  font-family:
+    "Consolas",
+    "Courier New",
+    monospace;
+
+  font-size:
+    13px;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+
+/* =====================================================
+   MINI CARDS
+===================================================== */
+
+.architecture-mini-grid {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap:
+    14px;
+
+  margin-top:
+    28px;
+}
+
+
+/* =====================================================
+   MINI CARD
+===================================================== */
+
+.architecture-mini-card {
+  position: relative;
+
+  min-height:
+    82px;
+
+  padding:
+    16px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.07);
+
+  border-radius:
+    15px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(17, 20, 28, 0.97),
+      rgba(7, 9, 15, 0.99)
+    );
+
+  color:
+    var(--text-primary);
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    12px;
+
+  overflow:
+    hidden;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 12px 30px rgba(0, 0, 0, 0.17);
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+
+/* Bottom glow */
+
+.architecture-mini-card::after {
+  content: "";
+
+  position: absolute;
+
+  left: 10%;
+  right: 10%;
+
+  bottom: -42px;
+
+  height: 62px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(99, 179, 255, 0.55),
+      rgba(0, 245, 200, 0.18),
+      transparent 72%
+    );
+
+  filter:
+    blur(18px);
+
+  opacity:
+    0.65;
+
+  pointer-events:
+    none;
+
+  animation:
+    mini-card-glow 4.5s ease-in-out infinite;
+}
+
+
+/* Shine */
+
+.architecture-mini-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: -100%;
+  left: -75%;
+
+  width: 35%;
+  height: 300%;
+
+  transform: rotate(20deg);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.07),
+      transparent
+    );
+
+  filter:
+    blur(8px);
+
+  pointer-events:
+    none;
+
+  transition:
+    left 0.7s ease;
+}
+
+.architecture-mini-card:hover::before {
+  left:
+    145%;
+}
+
+
+/* Hover */
+
+.architecture-mini-card:hover {
+  transform:
+    translateY(-6px);
+
+  border-color:
+    rgba(99, 179, 255, 0.25);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 18px 38px rgba(0, 0, 0, 0.25),
+    0 0 25px rgba(99, 179, 255, 0.05);
+}
+
+
+/* =====================================================
+   MINI CARD ICON
+===================================================== */
+
+.architecture-mini-card > svg {
+  position:
+    relative;
+
+  z-index:
+    2;
+
+  flex-shrink:
+    0;
+
+  width:
+    28px;
+
+  height:
+    28px;
+
+  padding:
+    8px;
+
+  border:
+    1px solid rgba(99, 179, 255, 0.16);
+
+  border-radius:
+    11px;
+
+  background:
+    rgba(99, 179, 255, 0.045);
+
+  color:
+    var(--accent-blue);
+
+  box-shadow:
+    0 0 18px rgba(99, 179, 255, 0.07);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.architecture-mini-card:hover > svg {
+  transform:
+    translateY(-2px)
+    scale(1.05);
+
+  box-shadow:
+    0 0 24px rgba(99, 179, 255, 0.13);
+}
+
+
+/* =====================================================
+   MINI CARD TEXT
+===================================================== */
+
+.architecture-mini-card div {
+  position:
+    relative;
+
+  z-index:
+    2;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  gap:
+    4px;
+}
+
+
+.architecture-mini-card strong {
+  font-size:
+    14px;
+
+  font-weight:
+    750;
+}
+
+
+.architecture-mini-card span {
+  color:
+    var(--text-secondary);
+
+  font-size:
+    12px;
+
+  line-height:
+    1.45;
+}
+
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+@keyframes architecture-glow {
+  0%,
+  100% {
+    transform:
+      scaleX(0.90);
+
+    opacity:
+      0.55;
+  }
+
+  50% {
+    transform:
+      scaleX(1.08);
+
+    opacity:
+      0.95;
+  }
+}
+
+
+@keyframes mini-card-glow {
+  0%,
+  100% {
+    transform:
+      scaleX(0.92);
+
+    opacity:
+      0.50;
+  }
+
+  50% {
+    transform:
+      scaleX(1.08);
+
+    opacity:
+      0.82;
+  }
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1000px) {
+
+  .architecture-guide {
+    width:
+      calc(100% - 32px);
+  }
+
+  .architecture-mini-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+
+  .architecture-mini-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 650px) {
+
+  .architecture-guide {
+    width:
+      calc(100% - 28px);
+
+    margin-top:
+      24px;
+
+    border-radius:
+      17px;
+  }
+
+  .architecture-guide-content {
+    padding:
+      24px 16px 26px;
+  }
+
+  .architecture-guide-header {
+    min-height:
+      53px;
+
+    padding:
+      0 14px;
+  }
+
+  .architecture-guide-title {
+    font-size:
+      14px;
+
+    gap:
+      8px;
+  }
+
+  .architecture-guide-content h2 {
+    font-size:
+      27px;
+
+    margin-bottom:
+      20px;
+  }
+
+  .architecture-point {
+    gap:
+      9px;
+
+    padding:
+      13px;
+  }
+
+  .architecture-bullet {
+    width:
+      28px;
+
+    height:
+      28px;
+
+    font-size:
+      12px;
+  }
+
+  .architecture-point-content p {
+    font-size:
+      14px;
+
+    line-height:
+      1.65;
+  }
+
+  .architecture-point-content code {
+    font-size:
+      12px;
+  }
+
+  .architecture-mini-grid {
+    gap:
+      10px;
+
+    margin-top:
+      22px;
+  }
+
+  .architecture-mini-card {
+    min-height:
+      74px;
+
+    padding:
+      14px;
+
+    border-radius:
+      13px;
+  }
+
+  .architecture-mini-card > svg {
+    width:
+      24px;
+
+    height:
+      24px;
+  }
+
+  .architecture-mini-card strong {
+    font-size:
+      13px;
+  }
+
+  .architecture-mini-card span {
+    font-size:
+      11px;
+  }
+}
+
+
+/* =====================================================
+   VERY SMALL SCREEN
+===================================================== */
+
+@media (max-width: 420px) {
+
+  .architecture-guide-content {
+    padding:
+      22px 13px 23px;
+  }
+
+  .architecture-point-content p {
+    font-size:
+      13px;
+  }
+
+  .architecture-mini-card {
+    gap:
+      9px;
+  }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .architecture-guide::after,
+  .architecture-guide-header::before,
+  .architecture-point::before,
+  .architecture-mini-card::before,
+  .architecture-mini-card::after {
+    animation:
+      none;
+  }
+}

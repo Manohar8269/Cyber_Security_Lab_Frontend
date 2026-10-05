@@ -1,0 +1,219 @@
+/* =====================================================
+   AMBIENT CYBERSECURITY BACKGROUND
+===================================================== */
+
+.cyber-background {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(85, 170, 255, 0.08), transparent 34%),
+    radial-gradient(circle at 100% 25%, rgba(155, 122, 255, 0.06), transparent 28%),
+    var(--bg-primary);
+}
+
+.cyber-grid {
+  position: absolute;
+  inset: -30%;
+  opacity: 0.32;
+  background-image:
+    linear-gradient(rgba(92, 128, 180, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(92, 128, 180, 0.08) 1px, transparent 1px);
+  background-size: 44px 44px;
+  transform: perspective(700px) rotateX(58deg) translateY(12%);
+  transform-origin: center bottom;
+  animation: cyber-grid-drift 22s linear infinite;
+}
+
+.cyber-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(85, 170, 255, 0.05) 45%,
+    transparent 60%
+  );
+  animation: cyber-grid-sweep 8s ease-in-out infinite;
+}
+
+.cyber-noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  background-image:
+    radial-gradient(circle at 20% 30%, #ffffff 0 1px, transparent 1px),
+    radial-gradient(circle at 70% 80%, #ffffff 0 1px, transparent 1px),
+    radial-gradient(circle at 40% 65%, #ffffff 0 1px, transparent 1px);
+  background-size: 7px 7px, 11px 11px, 13px 13px;
+  animation: cyber-noise-shift 0.6s steps(2) infinite;
+}
+
+.cyber-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, transparent 40%, rgba(0, 0, 0, 0.42) 100%);
+}
+
+.cyber-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(34px);
+  opacity: 0.16;
+  will-change: transform;
+}
+
+.cyber-orb-one {
+  width: 300px;
+  height: 300px;
+  top: 9%;
+  left: -100px;
+  background: #4aa7ff;
+  animation: cyber-orb-one 15s ease-in-out infinite;
+}
+
+.cyber-orb-two {
+  width: 360px;
+  height: 360px;
+  top: 44%;
+  right: -120px;
+  background: #9b7aff;
+  animation: cyber-orb-two 18s ease-in-out infinite;
+}
+
+.cyber-orb-three {
+  width: 240px;
+  height: 240px;
+  bottom: -100px;
+  left: 45%;
+  background: #37d4c0;
+  animation: cyber-orb-three 16s ease-in-out infinite;
+}
+
+.cyber-scanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -20%;
+  height: 16%;
+  opacity: 0.08;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(95, 180, 255, 0.75),
+    transparent
+  );
+  filter: blur(8px);
+  animation: cyber-scan 9s linear infinite;
+}
+
+@keyframes cyber-grid-drift {
+  from {
+    transform: perspective(700px) rotateX(58deg) translate3d(0, 12%, 0);
+  }
+  to {
+    transform: perspective(700px) rotateX(58deg) translate3d(-44px, 13%, 0);
+  }
+}
+
+@keyframes cyber-grid-sweep {
+  0%,
+  100% {
+    transform: translateY(-40%);
+    opacity: 0;
+  }
+  35%,
+  65% {
+    transform: translateY(25%);
+    opacity: 1;
+  }
+}
+
+@keyframes cyber-noise-shift {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(1%, -1%);
+  }
+  50% {
+    transform: translate(-1%, 1%);
+  }
+  75% {
+    transform: translate(1%, 1%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes cyber-orb-one {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(90px, 80px, 0) scale(1.1);
+  }
+}
+
+@keyframes cyber-orb-two {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-100px, -70px, 0) scale(1.08);
+  }
+}
+
+@keyframes cyber-orb-three {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(0.95);
+  }
+  50% {
+    transform: translate3d(60px, -60px, 0) scale(1.05);
+  }
+}
+
+@keyframes cyber-scan {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(760%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cyber-grid,
+  .cyber-grid::after,
+  .cyber-noise,
+  .cyber-orb,
+  .cyber-scanline {
+    animation: none;
+  }
+}
+
+[data-theme="light"] .cyber-background {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(25, 118, 210, 0.05), transparent 32%),
+    radial-gradient(circle at 100% 25%, rgba(112, 72, 216, 0.045), transparent 28%),
+    var(--bg-primary);
+}
+
+[data-theme="light"] .cyber-grid {
+  opacity: 0.16;
+}
+
+[data-theme="light"] .cyber-vignette {
+  background: radial-gradient(circle, transparent 44%, rgba(20, 30, 45, 0.08) 100%);
+}
+
+[data-theme="light"] .cyber-orb {
+  opacity: 0.08;
+}

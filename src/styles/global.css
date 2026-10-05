@@ -1,0 +1,254 @@
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+body {
+  margin: 0;
+
+  font-family:
+    Inter,
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  background: var(--bg-primary);
+
+  color: var(--text-primary);
+
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+
+button {
+  cursor: pointer;
+}
+
+
+a {
+  text-decoration: none;
+
+  color: inherit;
+}
+
+
+/* =====================================================
+   DARK THEME
+===================================================== */
+
+:root,
+[data-theme="dark"] {
+
+  --bg-primary: #0d1016;
+
+  --bg-secondary: #11151d;
+
+  --bg-card: #0f131a;
+
+  --bg-card-hover: #151a23;
+
+  --text-primary: #f5f7fb;
+
+  --text-secondary: #aeb7c8;
+
+  --text-muted: #7f8796;
+
+  --border-color: #353943;
+
+  --accent-blue: #55aaff;
+
+  --accent-purple: #9b7aff;
+
+  --button-bg: #ff4d52;
+
+  --button-hover: #ff6267;
+
+  --menu-bg: #0e1117;
+
+  --menu-border: #40444d;
+
+  --menu-hover: #262a32;
+
+  --menu-divider: #373b43;
+
+  --menu-shadow:
+    rgba(0, 0, 0, 0.45);
+
+  --theme-active: #343942;
+
+  --theme-active-border: #4a4f58;
+
+  --toggle-bg: #464a52;
+}
+
+
+/* =====================================================
+   LIGHT THEME
+===================================================== */
+
+[data-theme="light"] {
+
+  --bg-primary: #ffffff;
+
+  --bg-secondary: #f5f7fa;
+
+  --bg-card: #ffffff;
+
+  --bg-card-hover: #f7f9fc;
+
+  --text-primary: #17191f;
+
+  --text-secondary: #596273;
+
+  --text-muted: #7b8494;
+
+  --border-color: #d9dee7;
+
+  --accent-blue: #1976d2;
+
+  --accent-purple: #7048d8;
+
+  --button-bg: #ff4d52;
+
+  --button-hover: #e83e43;
+
+  --menu-bg: #ffffff;
+
+  --menu-border: #d6dae2;
+
+  --menu-hover: #f0f2f5;
+
+  --menu-divider: #e0e3e8;
+
+  --menu-shadow:
+    rgba(0, 0, 0, 0.18);
+
+  --theme-active: #e8ebf0;
+
+  --theme-active-border: #c5cad3;
+
+  --toggle-bg: #aeb5c0;
+}
+
+
+/* =====================================================
+   BODY TRANSITION
+===================================================== */
+
+body,
+.lab-card,
+.streamlit-menu,
+.theme-option,
+.menu-item,
+.menu-trigger {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+
+/* =====================================================
+   SCROLLBAR
+===================================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+
+  border-radius: 10px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+
+/* =====================================================
+   SELECTION
+===================================================== */
+
+::selection {
+  background: var(--accent-blue);
+
+  color: #ffffff;
+}
+/* =====================================================
+   GLOBAL UI POLISH
+===================================================== */
+
+::selection {
+  background: var(--accent-blue);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 3px;
+}
+
+body {
+  min-width: 320px;
+  overflow-x: hidden;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+[data-theme="light"] .lab-card,
+[data-theme="light"] .architecture-guide {
+  box-shadow: 0 18px 45px rgba(35, 50, 75, 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Keep the animated background behind the app without hiding it below the body. */
+#root {
+  position: relative;
+  isolation: isolate;
+}

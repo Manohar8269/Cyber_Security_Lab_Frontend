@@ -1,0 +1,1949 @@
+/* =====================================================
+   PATIENT LAB PAGE
+===================================================== */
+
+.patient-lab-page {
+  min-height: 100vh;
+
+  /* Fixed Navbar ke neeche spacing */
+  padding: 125px 5% 90px;
+
+  /* Animated background visible rahe */
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5, 8, 11, 0.78),
+      rgba(5, 8, 11, 0.88)
+    );
+
+  color: var(--text-primary);
+
+  position: relative;
+  isolation: isolate;
+
+  overflow: hidden;
+
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+/* Background glow */
+.patient-lab-page::before {
+  content: "";
+
+  position: absolute;
+  top: 5%;
+  left: -8%;
+
+  width: 420px;
+  height: 420px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 77, 82, 0.10),
+      transparent 70%
+    );
+
+  filter: blur(20px);
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+.patient-lab-page::after {
+  content: "";
+
+  position: absolute;
+  right: -10%;
+  top: 35%;
+
+  width: 420px;
+  height: 420px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(0, 245, 200, 0.07),
+      transparent 70%
+    );
+
+  filter: blur(25px);
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+
+/* =====================================================
+   TOP HEADER
+===================================================== */
+
+.patient-lab-header {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(170px, 1fr)
+    minmax(300px, 2.2fr)
+    minmax(170px, 1fr);
+
+  align-items: center;
+
+  gap: 18px;
+
+  padding: 0 0 30px;
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+/* Animated header line */
+
+.patient-lab-header::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -1px;
+
+  width: 120px;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #ff4d52,
+      transparent
+    );
+
+  animation:
+    patientHeaderScan 4s ease-in-out infinite;
+}
+
+@keyframes patientHeaderScan {
+  0% {
+    transform: translateX(0);
+    opacity: 0.2;
+  }
+
+  50% {
+    transform: translateX(350px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(700px);
+    opacity: 0.2;
+  }
+}
+
+
+/* =====================================================
+   BACK BUTTON
+===================================================== */
+
+.back-lab-button {
+  position: relative;
+
+  width: 100%;
+  min-height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.09);
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.018)
+    );
+
+  color: var(--text-primary);
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 8px 30px rgba(0, 0, 0, 0.18);
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+/* Shine */
+
+.back-lab-button::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -120%;
+
+  width: 70%;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.10),
+      transparent
+    );
+
+  transform: skewX(-20deg);
+
+  transition: left 0.6s ease;
+}
+
+.back-lab-button:hover::before {
+  left: 140%;
+}
+
+
+.back-lab-button:hover {
+  border-color:
+    rgba(0, 245, 200, 0.45);
+
+  color:
+    #00f5c8;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(0, 245, 200, 0.08),
+      rgba(255, 255, 255, 0.025)
+    );
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.25),
+    0 0 20px rgba(0, 245, 200, 0.08);
+}
+
+
+.back-lab-button:active {
+  transform:
+    translateY(0);
+}
+
+
+/* =====================================================
+   CENTER HEADER
+===================================================== */
+
+.lab-header-title {
+  position: relative;
+
+  min-height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  padding: 7px 14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.018)
+    );
+
+  border:
+    1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 10px;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 10px 35px rgba(0, 0, 0, 0.16);
+
+  white-space: nowrap;
+
+  overflow: hidden;
+}
+
+
+/* Header top glow */
+
+.lab-header-title::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 14%;
+
+  width: 72%;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 245, 200, 0.7),
+      transparent
+    );
+}
+
+
+.lab-header-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 19px;
+
+  filter:
+    drop-shadow(
+      0 0 8px rgba(0, 245, 200, 0.4)
+    );
+}
+
+
+.lab-header-title strong {
+  color:
+    var(--accent-blue);
+
+  font-size: 15px;
+
+  letter-spacing:
+    0.4px;
+}
+
+
+.lab-header-badge {
+  position: relative;
+
+  padding:
+    5px 9px;
+
+  border:
+    1px solid rgba(255, 77, 82, 0.40);
+
+  background:
+    rgba(255, 77, 82, 0.08);
+
+  color:
+    #ff8589;
+
+  border-radius: 6px;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing:
+    0.8px;
+
+  text-transform: uppercase;
+
+  box-shadow:
+    inset 0 0 12px rgba(255, 77, 82, 0.04);
+}
+
+
+/* =====================================================
+   ACTIVE SESSION
+===================================================== */
+
+.active-session {
+  text-align: right;
+
+  color:
+    var(--text-secondary);
+
+  font-size: 12px;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  letter-spacing: 0.2px;
+}
+
+
+.active-session span {
+  position: relative;
+
+  color:
+    #21c76f;
+
+  font-weight: 800;
+
+  padding-left: 13px;
+}
+
+
+.active-session span::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 50%;
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background:
+    #21c76f;
+
+  box-shadow:
+    0 0 8px rgba(33, 199, 111, 0.75);
+
+  transform:
+    translateY(-50%);
+
+  animation:
+    sessionPulse 1.8s ease-in-out infinite;
+}
+
+
+@keyframes sessionPulse {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: translateY(-50%) scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.15);
+  }
+}
+
+
+.active-session small {
+  color:
+    var(--text-muted);
+
+  margin-left: 4px;
+}
+
+
+/* =====================================================
+   MAIN CONTENT
+===================================================== */
+
+.patient-lab-content {
+  position: relative;
+
+  width: min(1400px, 100%);
+
+  margin:
+    0 auto;
+}
+
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.patient-title-section {
+  position: relative;
+
+  padding:
+    55px 0 30px;
+}
+
+
+.patient-title-section h1 {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+
+  margin: 0;
+
+  font-size:
+    clamp(38px, 4.2vw, 56px);
+
+  line-height: 1.05;
+
+  font-weight: 850;
+
+  letter-spacing:
+    -1.8px;
+}
+
+
+.patient-title-section h1::after {
+  content: "";
+
+  width: 8px;
+  height: 8px;
+
+  margin-top: 18px;
+
+  border-radius: 50%;
+
+  background:
+    #ff4d52;
+
+  box-shadow:
+    0 0 12px rgba(255, 77, 82, 0.8),
+    0 0 30px rgba(255, 77, 82, 0.25);
+
+  animation:
+    titleDotPulse 2s ease-in-out infinite;
+}
+
+
+@keyframes titleDotPulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.85);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+
+.patient-title-section h1 span {
+  font-size:
+    clamp(38px, 4vw, 52px);
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff4d52,
+      #ff7377,
+      #ffffff
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  text-shadow:
+    0 0 30px rgba(255, 77, 82, 0.12);
+}
+
+
+.patient-title-section p {
+  max-width: 780px;
+
+  margin:
+    22px 0 0;
+
+  color:
+    var(--text-secondary);
+
+  font-size: 15px;
+
+  font-weight: 500;
+
+  line-height: 1.75;
+}
+
+
+/* =====================================================
+   LOGIN SECTION
+===================================================== */
+
+.patient-login-section {
+  position: relative;
+
+  margin-top: 8px;
+
+  padding: 28px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(255, 255, 255, 0.012)
+    );
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+  overflow: hidden;
+}
+
+
+.patient-login-section::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #ff4d52,
+      rgba(255, 255, 255, 0.5),
+      #ff4d52,
+      transparent
+    );
+
+  opacity: 0.75;
+}
+
+
+.patient-login-section::after {
+  content: "";
+
+  position: absolute;
+
+  right: -100px;
+  top: -140px;
+
+  width: 300px;
+  height: 300px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 77, 82, 0.07),
+      transparent 70%
+    );
+
+  pointer-events: none;
+}
+
+
+/* =====================================================
+   FIELD
+===================================================== */
+
+.field-group {
+  width: 100%;
+
+  position: relative;
+
+  z-index: 1;
+}
+
+
+.field-group label {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color:
+    var(--text-primary);
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.35px;
+}
+
+
+/* =====================================================
+   PATIENT SELECT
+===================================================== */
+
+.patient-select-wrapper {
+  position: relative;
+}
+
+
+.patient-select-wrapper select {
+  width: 100%;
+  height: 50px;
+
+  padding:
+    0 48px 0 15px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 9px;
+
+  outline: none;
+
+  appearance: none;
+
+  background:
+    rgba(5, 8, 11, 0.72);
+
+  color:
+    var(--text-primary);
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.patient-select-wrapper select:hover {
+  border-color:
+    rgba(255, 255, 255, 0.18);
+
+  background:
+    rgba(10, 14, 18, 0.82);
+}
+
+
+.patient-select-wrapper select:focus {
+  border-color:
+    rgba(255, 77, 82, 0.75);
+
+  background:
+    rgba(10, 13, 17, 0.95);
+
+  box-shadow:
+    0 0 0 3px rgba(255, 77, 82, 0.08),
+    0 0 22px rgba(255, 77, 82, 0.08);
+}
+
+
+.patient-select-wrapper select option {
+  background:
+    #080d11;
+
+  color:
+    #ffffff;
+}
+
+
+.select-icon {
+  position: absolute;
+
+  top: 50%;
+  right: 14px;
+
+  transform:
+    translateY(-50%);
+
+  pointer-events: none;
+
+  color:
+    rgba(255, 255, 255, 0.65);
+
+  transition:
+    color 0.2s ease;
+}
+
+
+.patient-select-wrapper:hover .select-icon {
+  color:
+    #ff8589;
+}
+
+
+/* =====================================================
+   PASSWORD BOX
+===================================================== */
+
+.password-box {
+  position: relative;
+
+  margin-top: 20px;
+
+  padding:
+    22px 20px 20px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 11px;
+
+  background:
+    rgba(255, 255, 255, 0.018);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+}
+
+
+.password-box::before {
+  content: "";
+
+  position: absolute;
+
+  left: 18px;
+  top: -1px;
+
+  width: 80px;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff4d52,
+      transparent
+    );
+}
+
+
+/* =====================================================
+   PASSWORD INPUT
+===================================================== */
+
+.password-wrapper {
+  position: relative;
+}
+
+
+.password-wrapper input {
+  width: 100%;
+  height: 48px;
+
+  padding:
+    0 52px 0 15px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.08);
+
+  outline: none;
+
+  border-radius: 9px;
+
+  background:
+    rgba(5, 8, 11, 0.72);
+
+  color:
+    var(--text-primary);
+
+  font-size: 14px;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.02);
+
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.password-wrapper input::placeholder {
+  color:
+    var(--text-muted);
+}
+
+
+.password-wrapper input:hover {
+  border-color:
+    rgba(255, 255, 255, 0.17);
+}
+
+
+.password-wrapper input:focus {
+  border-color:
+    rgba(255, 77, 82, 0.75);
+
+  background:
+    rgba(10, 13, 17, 0.95);
+
+  box-shadow:
+    0 0 0 3px rgba(255, 77, 82, 0.07),
+    0 0 20px rgba(255, 77, 82, 0.08);
+}
+
+
+.password-toggle {
+  position: absolute;
+
+  top: 50%;
+  right: 10px;
+
+  transform:
+    translateY(-50%);
+
+  border: none;
+
+  background:
+    transparent;
+
+  color:
+    var(--text-secondary);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  padding: 7px;
+
+  border-radius: 7px;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.password-toggle:hover {
+  background:
+    rgba(255, 255, 255, 0.05);
+
+  color:
+    #ff8589;
+
+  transform:
+    translateY(-50%) scale(1.05);
+}
+
+
+/* =====================================================
+   LOGIN BUTTON
+===================================================== */
+
+.login-button {
+  position: relative;
+
+  width: 100%;
+  min-height: 50px;
+
+  margin-top: 18px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 9px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff4d52,
+      #e93d44
+    );
+
+  color:
+    #ffffff;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  letter-spacing:
+    0.3px;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 8px 22px rgba(255, 77, 82, 0.18);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+
+.login-button::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -100%;
+
+  width: 70%;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      100deg,
+      transparent,
+      rgba(255, 255, 255, 0.24),
+      transparent
+    );
+
+  transform: skewX(-20deg);
+
+  transition:
+    left 0.6s ease;
+}
+
+
+.login-button:hover::before {
+  left: 140%;
+}
+
+
+.login-button:hover {
+  background:
+    linear-gradient(
+      135deg,
+      #ff5b60,
+      #ee4249
+    );
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 12px 28px rgba(255, 77, 82, 0.25),
+    0 0 25px rgba(255, 77, 82, 0.10);
+}
+
+
+.login-button:active {
+  transform:
+    translateY(0);
+
+  box-shadow:
+    0 6px 16px rgba(255, 77, 82, 0.18);
+}
+
+
+/* =====================================================
+   SUCCESS
+===================================================== */
+
+.login-success {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  margin-top: 14px;
+
+  padding:
+    10px 12px;
+
+  border:
+    1px solid rgba(37, 201, 120, 0.18);
+
+  border-radius: 8px;
+
+  background:
+    rgba(37, 201, 120, 0.05);
+
+  color:
+    #25c978;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  animation:
+    successFade 0.35s ease forwards;
+}
+
+
+@keyframes successFade {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =====================================================
+   DIVIDER
+===================================================== */
+
+.patient-divider {
+  position: relative;
+
+  width: 100%;
+  height: 1px;
+
+  background:
+    rgba(255, 255, 255, 0.08);
+
+  margin:
+    58px 0 40px;
+}
+
+
+.patient-divider::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 60px;
+  height: 3px;
+
+  transform:
+    translate(-50%, -50%);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #ff4d52,
+      transparent
+    );
+
+  filter:
+    blur(1px);
+
+  opacity: 0.8;
+}
+
+
+/* =====================================================
+   EXPLOIT GUIDE
+===================================================== */
+
+.exploit-guide {
+  position: relative;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 13px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(255, 255, 255, 0.012)
+    );
+
+  box-shadow:
+    0 20px 55px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.exploit-guide:hover {
+  border-color:
+    rgba(255, 77, 82, 0.20);
+
+  box-shadow:
+    0 22px 65px rgba(0, 0, 0, 0.20),
+    0 0 30px rgba(255, 77, 82, 0.04);
+}
+
+
+/* =====================================================
+   GUIDE HEADER
+===================================================== */
+
+.exploit-guide-header {
+  position: relative;
+
+  width: 100%;
+  min-height: 52px;
+
+  border: none;
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.07);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 77, 82, 0.055),
+      rgba(255, 255, 255, 0.018),
+      rgba(0, 245, 200, 0.025)
+    );
+
+  color:
+    var(--text-primary);
+
+  cursor: pointer;
+
+  padding:
+    0 18px;
+
+  text-align: left;
+
+  transition:
+    background 0.25s ease;
+}
+
+
+.exploit-guide-header:hover {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 77, 82, 0.075),
+      rgba(255, 255, 255, 0.025),
+      rgba(0, 245, 200, 0.035)
+    );
+}
+
+
+.guide-title {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  font-size: 14px;
+
+  font-weight: 750;
+
+  letter-spacing:
+    0.2px;
+}
+
+
+.guide-title svg {
+  color:
+    #ff8589;
+
+  filter:
+    drop-shadow(
+      0 0 8px rgba(255, 77, 82, 0.35)
+    );
+}
+
+
+/* =====================================================
+   ARROW
+===================================================== */
+
+.guide-arrow {
+  margin-left: auto;
+
+  transition:
+    transform 0.25s ease;
+}
+
+
+.guide-arrow.open {
+  transform:
+    rotate(180deg);
+}
+
+
+/* =====================================================
+   GUIDE CONTENT
+===================================================== */
+
+.exploit-guide-content {
+  position: relative;
+
+  padding:
+    28px 24px 30px;
+
+  animation:
+    guideContentFade 0.3s ease forwards;
+}
+
+
+@keyframes guideContentFade {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.exploit-guide-content ol {
+  margin: 0;
+
+  padding-left: 24px;
+
+  counter-reset: patientGuide;
+}
+
+
+.exploit-guide-content li {
+  position: relative;
+
+  padding-left: 6px;
+
+  margin-bottom: 17px;
+
+  color:
+    rgba(255, 255, 255, 0.84);
+
+  line-height:
+    1.75;
+
+  font-size: 15px;
+}
+
+
+.exploit-guide-content li::marker {
+  color:
+    #ff5e63;
+
+  font-weight: 800;
+}
+
+
+.exploit-guide-content li:last-child {
+  margin-bottom: 0;
+}
+
+
+.chat-inline {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin:
+    0 5px;
+
+  padding:
+    2px 6px;
+
+  border-radius: 5px;
+
+  background:
+    rgba(0, 245, 200, 0.07);
+
+  color:
+    #00f5c8;
+
+  box-shadow:
+    inset 0 0 10px rgba(0, 245, 200, 0.04);
+}
+
+
+/* =====================================================
+   EXAMPLE PROMPT
+===================================================== */
+
+.example-prompt {
+  margin-top: 9px;
+
+  padding:
+    13px 15px;
+
+  border-left:
+    2px solid #00f5c8;
+
+  border-radius:
+    0 7px 7px 0;
+
+  background:
+    rgba(0, 245, 200, 0.035);
+
+  color:
+    var(--text-secondary);
+
+  font-style: italic;
+
+  line-height:
+    1.7;
+
+  font-size: 14px;
+
+  box-shadow:
+    inset 0 0 15px rgba(0, 245, 200, 0.025);
+}
+
+
+/* =====================================================
+   WARNING
+===================================================== */
+
+.guide-warning {
+  position: relative;
+
+  display: flex;
+
+  gap: 13px;
+
+  margin-top: 28px;
+
+  padding:
+    17px;
+
+  border:
+    1px solid rgba(255, 189, 36, 0.25);
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 189, 36, 0.065),
+      rgba(255, 189, 36, 0.018)
+    );
+
+  color:
+    var(--text-primary);
+
+  overflow: hidden;
+}
+
+
+.guide-warning::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 3px;
+  height: 100%;
+
+  background:
+    #ffbd24;
+
+  box-shadow:
+    0 0 14px rgba(255, 189, 36, 0.45);
+}
+
+
+.guide-warning svg {
+  flex-shrink: 0;
+
+  color:
+    #ffbd24;
+
+  filter:
+    drop-shadow(
+      0 0 7px rgba(255, 189, 36, 0.35)
+    );
+}
+
+
+.guide-warning strong {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color:
+    #ffd267;
+
+  font-size: 14px;
+}
+
+
+.guide-warning p {
+  margin: 0;
+
+  color:
+    var(--text-secondary);
+
+  line-height:
+    1.65;
+
+  font-size: 13px;
+}
+
+
+/* =====================================================
+   FLOATING CHAT
+===================================================== */
+
+.floating-chat-button {
+  position: fixed;
+
+  right: 28px;
+  bottom: 28px;
+
+  width: 60px;
+  height: 60px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.12);
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ff555a,
+      #dc373e
+    );
+
+  color:
+    #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.38),
+    0 0 0 6px rgba(255, 77, 82, 0.06),
+    0 0 30px rgba(255, 77, 82, 0.18);
+
+  z-index: 900;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+/* Floating ring */
+
+.floating-chat-button::before {
+  content: "";
+
+  position: absolute;
+
+  inset: -7px;
+
+  border:
+    1px solid rgba(255, 77, 82, 0.20);
+
+  border-radius: 50%;
+
+  animation:
+    chatRing 2.5s ease-out infinite;
+}
+
+
+@keyframes chatRing {
+  0% {
+    opacity: 0.7;
+    transform: scale(0.92);
+  }
+
+  70% {
+    opacity: 0;
+    transform: scale(1.25);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.25);
+  }
+}
+
+
+.floating-chat-button:hover {
+  background:
+    linear-gradient(
+      145deg,
+      #ff686d,
+      #e84148
+    );
+
+  transform:
+    translateY(-4px) scale(1.05);
+
+  box-shadow:
+    0 16px 38px rgba(0, 0, 0, 0.40),
+    0 0 0 7px rgba(255, 77, 82, 0.08),
+    0 0 35px rgba(255, 77, 82, 0.25);
+}
+
+
+.floating-chat-button:active {
+  transform:
+    translateY(-1px) scale(1.01);
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1100px) {
+
+  .patient-lab-header {
+    grid-template-columns:
+      1fr;
+  }
+
+  .lab-header-title {
+    justify-content:
+      flex-start;
+
+    white-space:
+      normal;
+  }
+
+  .active-session {
+    text-align:
+      left;
+  }
+
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 820px) {
+
+  .patient-lab-page {
+    padding:
+      115px 24px 90px;
+  }
+
+  .patient-login-section {
+    padding:
+      23px;
+  }
+
+  .patient-title-section {
+    padding:
+      45px 0 25px;
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+  .patient-lab-page {
+    padding:
+      110px 18px 90px;
+  }
+
+  .patient-lab-header {
+    gap: 13px;
+
+    padding-bottom:
+      23px;
+  }
+
+  .patient-title-section {
+    padding:
+      38px 0 25px;
+  }
+
+  .patient-title-section h1 {
+    align-items:
+      flex-start;
+
+    flex-wrap:
+      wrap;
+
+    gap: 10px;
+
+    font-size:
+      34px;
+
+    letter-spacing:
+      -1px;
+  }
+
+  .patient-title-section h1 span {
+    font-size:
+      34px;
+  }
+
+  .patient-title-section h1::after {
+    display:
+      none;
+  }
+
+  .patient-title-section p {
+    margin-top:
+      17px;
+
+    font-size:
+      14px;
+
+    line-height:
+      1.7;
+  }
+
+  .lab-header-title {
+    align-items:
+      flex-start;
+
+    flex-wrap:
+      wrap;
+
+    padding:
+      10px 12px;
+  }
+
+  .lab-header-badge {
+    width:
+      auto;
+  }
+
+  .active-session {
+    font-size:
+      11px;
+  }
+
+  .patient-login-section {
+    padding:
+      18px;
+  }
+
+  .password-box {
+    padding:
+      18px 14px 15px;
+  }
+
+  .patient-divider {
+    margin:
+      45px 0 30px;
+  }
+
+  .exploit-guide-content {
+    padding:
+      20px 16px 24px;
+  }
+
+  .exploit-guide-content li {
+    font-size:
+      14px;
+
+    line-height:
+      1.7;
+  }
+
+  .guide-warning {
+    padding:
+      14px;
+
+    gap: 10px;
+  }
+
+  .floating-chat-button {
+    width:
+      55px;
+
+    height:
+      55px;
+
+    right:
+      18px;
+
+    bottom:
+      18px;
+  }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 450px) {
+
+  .patient-lab-page {
+    padding:
+      106px 14px 85px;
+  }
+
+  .patient-title-section h1 {
+    font-size:
+      29px;
+  }
+
+  .patient-title-section h1 span {
+    font-size:
+      29px;
+  }
+
+  .patient-title-section p {
+    font-size:
+      13px;
+  }
+
+  .lab-header-title strong {
+    font-size:
+      13px;
+  }
+
+  .lab-header-badge {
+    font-size:
+      10px;
+  }
+
+  .active-session {
+    font-size:
+      11px;
+
+    white-space:
+      normal;
+
+    line-height:
+      1.5;
+  }
+
+  .patient-login-section {
+    padding:
+      15px;
+  }
+
+  .field-group label {
+    font-size:
+      12px;
+  }
+
+  .patient-select-wrapper select,
+  .password-wrapper input {
+    height:
+      46px;
+
+    font-size:
+      13px;
+  }
+
+  .login-button {
+    min-height:
+      47px;
+
+    font-size:
+      13px;
+  }
+
+  .exploit-guide-content {
+    padding:
+      18px 14px 22px;
+  }
+
+  .exploit-guide-content li {
+    font-size:
+      13px;
+  }
+
+  .example-prompt {
+    font-size:
+      12px;
+
+    padding:
+      11px 12px;
+  }
+
+  .guide-warning p {
+    font-size:
+      12px;
+  }
+
+  .floating-chat-button {
+    width:
+      52px;
+
+    height:
+      52px;
+
+    right:
+      15px;
+
+    bottom:
+      15px;
+  }
+
+}
+
+
+/* =====================================================
+   ACCESSIBILITY
+===================================================== */
+
+.back-lab-button:focus-visible,
+.login-button:focus-visible,
+.password-toggle:focus-visible,
+.exploit-guide-header:focus-visible,
+.floating-chat-button:focus-visible,
+.patient-select-wrapper select:focus-visible,
+.password-wrapper input:focus-visible {
+  outline:
+    2px solid #00f5c8;
+
+  outline-offset:
+    3px;
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .patient-lab-header::after,
+  .active-session span::before,
+  .patient-title-section h1::after,
+  .floating-chat-button::before {
+    animation:
+      none;
+  }
+
+  .back-lab-button,
+  .login-button,
+  .floating-chat-button,
+  .password-toggle,
+  .patient-select-wrapper select,
+  .password-wrapper input {
+    transition:
+      none;
+  }
+
+}
