@@ -26,7 +26,7 @@ export default function ShopBotLab() {
   // LOGIN
   // =====================================================
 
-  const [username, setUsername] =
+  const [userId, setUsername] =
     useState("");
 
   const [password, setPassword] =
@@ -38,40 +38,93 @@ export default function ShopBotLab() {
   const [loggedIn, setLoggedIn] =
     useState(false);
 
+  // =====================================================
+// VALIDATE USER ID
+// USER ID = EMAIL OR MOBILE NUMBER
+// =====================================================
+
+const validateUserId = (value) => {
+  const userId = value.trim();
+
+  // Email validation
+  const emailRegex =
+    /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  // Indian mobile number validation
+  // Must start with 6, 7, 8 or 9
+  // Exactly 10 digits
+  const mobileRegex =
+    /^[6-9]\d{9}$/;
+
+  if (emailRegex.test(userId)) {
+    return "email";
+  }
+
+  if (mobileRegex.test(userId)) {
+    return "mobile";
+  }
+
+  return null;
+};
+
 
   // =====================================================
   // LOGIN
   // =====================================================
+const handleLogin = () => {
+  const value = userId.trim();
 
-  const handleLogin = () => {
-    if (!username.trim()) {
-      alert("Please enter username.");
-      return;
-    }
+  // Empty User ID
+  if (!value) {
+    alert("Please enter your email or mobile number.");
+    return;
+  }
 
-    if (!password.trim()) {
-      alert("Please enter password.");
-      return;
-    }
+  // Email validation
+  const emailRegex =
+    /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-    const matchedAccount =
-      demoAccounts.find(
-        (account) =>
-          account.username === username &&
-          account.password === password
-      );
+  // Indian mobile number validation
+  const mobileRegex =
+    /^[6-9]\d{9}$/;
 
-    if (!matchedAccount) {
-      alert(
-        "Invalid demo credentials. Please use one of the demo accounts."
-      );
+  const isEmail = emailRegex.test(value);
+  const isMobile = mobileRegex.test(value);
 
-      return;
-    }
+  // Invalid Email / Mobile
+  if (!isEmail && !isMobile) {
+    alert(
+      "Please enter a valid email ID or valid 10-digit mobile number."
+    );
+    return;
+  }
 
-    setLoggedIn(true);
-  };
+  // Password
+  if (!password.trim()) {
+    alert("Please enter your password.");
+    return;
+  }
 
+  // Example account check
+  const matchedAccount =
+    demoAccounts.find(
+      (account) =>
+        (
+          account.email === value ||
+          account.mobile === value
+        ) &&
+        account.password === password
+    );
+
+  if (!matchedAccount) {
+    alert(
+      "Invalid email/mobile number or password."
+    );
+    return;
+  }
+
+  setLoggedIn(true);
+};
   // =====================================================
   // OPEN SIGNUP PAGE
   // =====================================================
@@ -150,13 +203,13 @@ export default function ShopBotLab() {
           <div className="shopbot-field-group">
 
             <label htmlFor="shopbot-username">
-              Username
+              User ID
             </label>
 
             <input
               id="shopbot-username"
               type="text"
-              value={username}
+              value={userId}  
               onChange={(event) => {
                 setUsername(event.target.value);
                 setLoggedIn(false);
@@ -237,7 +290,7 @@ export default function ShopBotLab() {
                 Logged in as{" "}
 
                 <strong>
-                  {username}
+                  {userId}
                 </strong>
               </span>
 

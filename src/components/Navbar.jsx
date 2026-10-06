@@ -72,8 +72,7 @@ const Navbar = () => {
 
         {/* ================= LOGO ================= */}
         <a
-          target="_blank"
-          rel="noreferrer"
+          href="/"
           className="navbar-logo"
         >
           <span className="logo-icon">
