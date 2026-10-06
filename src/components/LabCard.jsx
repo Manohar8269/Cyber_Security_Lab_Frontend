@@ -125,7 +125,7 @@ export default function LabCard({ lab, index = 0 }) {
 
       </div>
 
-      {/* Shine */}
+      {/* Shine */} 
       <div className="lab-card-shine" />
     </motion.article>
   );

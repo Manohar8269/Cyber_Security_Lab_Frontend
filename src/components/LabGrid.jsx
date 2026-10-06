@@ -6,8 +6,7 @@ export default function LabGrid() {
     <section className="labs-section" id="labs">
       <div className="labs-heading">
         <div>
-          <span className="labs-kicker">ATTACK SURFACE CATALOG</span>
-          <h2>Choose a vulnerability lab</h2>
+          <h2>Choose a vulnerability Labs</h2>
           <p>Controlled environments built for safe security testing and hands-on experimentation.</p>
         </div>
         <span className="labs-count">{String(labs.length).padStart(2, "0")} LABS</span>

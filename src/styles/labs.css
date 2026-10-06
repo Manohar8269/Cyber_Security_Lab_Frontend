@@ -10,11 +10,20 @@
 }
 
 .labs-heading {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 24px;
-  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.labs-heading > div {
+  grid-column: 2;
+  text-align: center;
+}
+
+.labs-count {
+  grid-column: 3;
+  justify-self: end;
 }
 
 .labs-kicker {
@@ -57,6 +66,15 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
+}
+
+/* =====================================================
+   SINGLE LAB CENTER
+===================================================== */
+
+.labs-grid:has(.lab-card:only-child) {
+  grid-template-columns: minmax(320px, 520px);
+  justify-content: center;
 }
 
 /* =====================================================
@@ -288,6 +306,7 @@
 }
 
 @media (max-width: 700px) {
+
   .labs-section {
     width: min(92%, 1400px);
   }
@@ -298,6 +317,11 @@
   }
 
   .labs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Single lab on mobile */
+  .labs-grid:has(.lab-card:only-child) {
     grid-template-columns: 1fr;
   }
 

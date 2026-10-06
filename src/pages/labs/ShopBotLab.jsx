@@ -5,12 +5,17 @@ import {
   Eye,
   EyeOff,
   ChevronDown,
-  MessageCircle,
   CheckCircle2,
   UserPlus,
+  ShieldCheck,
+  Database,
+  Terminal,
+  LockKeyhole,
 } from "lucide-react";
 
-import { useNavigate } from "react-router-dom";
+import {
+  useNavigate,
+} from "react-router-dom";
 
 import "./ShopBotLab.css";
 
@@ -18,12 +23,14 @@ export default function ShopBotLab() {
   const navigate = useNavigate();
 
   // =====================================================
-  // LOGIN FORM
+  // LOGIN
   // =====================================================
 
-  const [username, setUsername] = useState("attacker");
+  const [username, setUsername] =
+    useState("");
 
-  const [password, setPassword] = useState("");
+  const [password, setPassword] =
+    useState("");
 
   const [showPassword, setShowPassword] =
     useState(false);
@@ -31,78 +38,12 @@ export default function ShopBotLab() {
   const [loggedIn, setLoggedIn] =
     useState(false);
 
-  // =====================================================
-  // DEMO ACCOUNTS
-  // =====================================================
-
-  const [demoOpen, setDemoOpen] =
-    useState(true);
-
-  const demoAccounts = [
-    {
-      username: "attacker",
-      password: "hack123",
-      role: "Attacker (Target Demo)",
-    },
-    {
-      username: "alice",
-      password: "alice123",
-      role: "Customer",
-    },
-    {
-      username: "bob",
-      password: "bob456",
-      role: "Customer",
-    },
-    {
-      username: "admin",
-      password: "admin@123",
-      role: "Admin",
-    },
-  ];
-
-  // =====================================================
-  // CREATE ACCOUNT
-  // =====================================================
-
-  const [showCreateAccount, setShowCreateAccount] =
-    useState(false);
-
-  const [newUsername, setNewUsername] =
-    useState("");
-
-  const [newPassword, setNewPassword] =
-    useState("");
-
-  // =====================================================
-  // BACK TO LAB HUB
-  // =====================================================
-
-  const handleBack = () => {
-    navigate("/");
-  };
-
-  // =====================================================
-  // DEMO ACCOUNT SELECT
-  // =====================================================
-
-  const selectDemoAccount = (account) => {
-    setUsername(account.username);
-    setPassword(account.password);
-    setLoggedIn(false);
-  };
 
   // =====================================================
   // LOGIN
   // =====================================================
 
   const handleLogin = () => {
-    const matchedAccount = demoAccounts.find(
-      (account) =>
-        account.username === username &&
-        account.password === password
-    );
-
     if (!username.trim()) {
       alert("Please enter username.");
       return;
@@ -113,10 +54,18 @@ export default function ShopBotLab() {
       return;
     }
 
+    const matchedAccount =
+      demoAccounts.find(
+        (account) =>
+          account.username === username &&
+          account.password === password
+      );
+
     if (!matchedAccount) {
       alert(
         "Invalid demo credentials. Please use one of the demo accounts."
       );
+
       return;
     }
 
@@ -124,144 +73,77 @@ export default function ShopBotLab() {
   };
 
   // =====================================================
-  // CREATE ACCOUNT
+  // OPEN SIGNUP PAGE
   // =====================================================
 
-  const handleCreateAccount = (event) => {
-    event.preventDefault();
-
-    if (!newUsername.trim()) {
-      alert("Please enter a username.");
-      return;
-    }
-
-    if (!newPassword.trim()) {
-      alert("Please enter a password.");
-      return;
-    }
-
-    alert(
-      `Demo account "${newUsername}" created successfully.`
-    );
-
-    setShowCreateAccount(false);
-
-    setUsername(newUsername);
-
-    setPassword(newPassword);
-
-    setNewUsername("");
-
-    setNewPassword("");
-
-    setLoggedIn(false);
-  };
-
-  // =====================================================
-  // OPEN SHOPBOT CHAT
-  // =====================================================
-
-  const handleOpenChat = () => {
-    alert(
-      "ShopBot AI assistant will be connected in the next step."
-    );
+  const handleCreateAccount = () => {
+    navigate("/labs/shopbot/signup");
   };
 
   return (
     <div className="shopbot-lab-page">
 
       {/* =================================================
-          HEADER
+          TOP SHOPBOT HEADER
       ================================================= */}
 
-      <header className="shopbot-lab-header">
-
-        {/* BACK */}
-
-        <button
-          type="button"
-          className="shopbot-back-button"
-          onClick={handleBack}
-        >
-          <ArrowLeft size={18} />
-
-          <span>
-            Back to Lab Hub
-          </span>
-        </button>
+      <header className="shopbot-main-header">
 
 
-        {/* CENTER */}
+        <div className="shopbot-brand">
 
-        <div className="shopbot-header-title">
+          <div className="shopbot-brand-icon">
+            <ShieldCheck size={35} />
+          </div>
 
-          <span className="shopbot-header-icon">
-            🛍️
-          </span>
+          <div>
+            <h1>
+              ShopBot
+            </h1>
 
-          <strong>
-            ShopBot E-Commerce
-          </strong>
-
-          <span className="shopbot-header-badge">
-            Text-to-SQL Prompt Injection & Insecure Output
-          </span>
+          </div>
 
         </div>
 
 
-        {/* SESSION */}
-
-        <div className="shopbot-session">
-
-          Active Session:
-
-          <span>
-            ONLINE
-          </span>
-
-          <small>
-            (Port 8000)
-          </small>
-
-        </div>
 
       </header>
 
 
       {/* =================================================
-          MAIN CONTENT
+          MAIN TWO COLUMN LAYOUT
       ================================================= */}
 
-      <main className="shopbot-lab-content">
+      <main className="shopbot-main-layout">
 
         {/* =================================================
-            TITLE
+            LEFT - CUSTOMER LOGIN
         ================================================= */}
 
-        <section className="shopbot-title-section">
+        <section className="shopbot-login-panel">
 
-          <h1>
-            <span>
+          <div className="shopbot-panel-heading">
+
+            <div className="shopbot-panel-icon">
               🛍️
-            </span>
+            </div>
 
-            ShopBot - Customer Login
-          </h1>
+            <div>
+              <span>
+                CUSTOMER PORTAL
+              </span>
 
-          <p>
-            OWASP Insecure Output Handling &
-            LLM-Driven SQL Injection Lab
-          </p>
+              <h2>
+                Customer Login
+              </h2>
 
-        </section>
+              <p>
+                Access the ShopBot training environment.
+              </p>
+            </div>
 
+          </div>
 
-        {/* =================================================
-            LOGIN CARD
-        ================================================= */}
-
-        <section className="shopbot-login-card">
 
           {/* USERNAME */}
 
@@ -280,6 +162,7 @@ export default function ShopBotLab() {
                 setLoggedIn(false);
               }}
               autoComplete="username"
+              placeholder="Enter username"
             />
 
           </div>
@@ -308,6 +191,7 @@ export default function ShopBotLab() {
                   setLoggedIn(false);
                 }}
                 autoComplete="current-password"
+                placeholder="Enter password"
               />
 
               <button
@@ -318,16 +202,11 @@ export default function ShopBotLab() {
                     (prev) => !prev
                   )
                 }
-                aria-label={
-                  showPassword
-                    ? "Hide password"
-                    : "Show password"
-                }
               >
                 {showPassword ? (
-                  <EyeOff size={20} />
+                  <EyeOff size={19} />
                 ) : (
-                  <Eye size={20} />
+                  <Eye size={19} />
                 )}
               </button>
 
@@ -336,7 +215,7 @@ export default function ShopBotLab() {
           </div>
 
 
-          {/* LOGIN BUTTON */}
+          {/* LOGIN */}
 
           <button
             type="button"
@@ -347,7 +226,7 @@ export default function ShopBotLab() {
           </button>
 
 
-          {/* SUCCESS */}
+          {/* LOGIN SUCCESS */}
 
           {loggedIn && (
             <div className="shopbot-login-success">
@@ -355,7 +234,7 @@ export default function ShopBotLab() {
               <CheckCircle2 size={18} />
 
               <span>
-                Logged in successfully as{" "}
+                Logged in as{" "}
 
                 <strong>
                   {username}
@@ -365,261 +244,182 @@ export default function ShopBotLab() {
             </div>
           )}
 
+
+          {/* =================================================
+              CREATE ACCOUNT
+          ================================================= */}
+
+          <div className="shopbot-signup-area">
+
+            <p>
+              New customer?
+            </p>
+
+            <button
+              type="button"
+              className="shopbot-create-button"
+              onClick={
+                handleCreateAccount
+              }
+            >
+              <UserPlus size={17} />
+
+              Create an account
+            </button>
+
+          </div>
+
         </section>
 
 
         {/* =================================================
-            DEMO ACCOUNTS
+            RIGHT - CYBER SECURITY DETAILS
         ================================================= */}
 
-        <section className="shopbot-demo-section">
+        <section className="shopbot-security-panel">
 
-          {/* HEADER */}
+          <div className="security-eyebrow">
+            SECURITY TRAINING ENVIRONMENT
+          </div>
 
-          <button
-            type="button"
-            className="shopbot-demo-header"
-            onClick={() =>
-              setDemoOpen(
-                (prev) => !prev
-              )
-            }
-          >
+          <h2>
+            ShopBot
+            <span>
+              Security Overview
+            </span>
+          </h2>
 
-            <div className="shopbot-demo-title">
-
-              <ChevronDown
-                size={18}
-                className={
-                  demoOpen
-                    ? "shopbot-demo-arrow open"
-                    : "shopbot-demo-arrow"
-                }
-              />
-
-              <span>
-                🧪
-              </span>
-
-              <strong>
-                Demo Accounts
-              </strong>
-
-            </div>
-
-          </button>
+          <p className="security-intro">
+            ShopBot is a deliberately vulnerable
+            e-commerce assistant designed to demonstrate
+            security weaknesses in AI-driven applications.
+          </p>
 
 
-          {/* TABLE */}
+          {/* SECURITY ITEMS */}
 
-          {demoOpen && (
-            <div className="shopbot-demo-content">
+          <div className="security-feature-list">
 
-              <div className="shopbot-table-wrapper">
+            {/* ITEM 1 */}
 
-                <table>
+            <div className="security-feature">
 
-                  <thead>
+              <div className="security-feature-icon">
+                <Terminal size={21} />
+              </div>
 
-                    <tr>
-                      <th>
-                        Username
-                      </th>
+              <div>
+                <h3>
+                  Text-to-SQL
+                </h3>
 
-                      <th>
-                        Password
-                      </th>
-
-                      <th>
-                        Role
-                      </th>
-                    </tr>
-
-                  </thead>
-
-                  <tbody>
-
-                    {demoAccounts.map(
-                      (account) => (
-                        <tr
-                          key={
-                            account.username
-                          }
-                          onClick={() =>
-                            selectDemoAccount(
-                              account
-                            )
-                          }
-                          className="demo-account-row"
-                          title="Click to use this account"
-                        >
-
-                          <td>
-                            {account.username}
-                          </td>
-
-                          <td>
-                            {account.password}
-                          </td>
-
-                          <td>
-                            {account.role}
-                          </td>
-
-                        </tr>
-                      )
-                    )}
-
-                  </tbody>
-
-                </table>
-
+                <p>
+                  Natural-language requests can be
+                  translated into database queries,
+                  creating a dangerous attack surface
+                  when generated output is not validated.
+                </p>
               </div>
 
             </div>
-          )}
-
-        </section>
 
 
-        {/* =================================================
-            CREATE ACCOUNT
-        ================================================= */}
+            {/* ITEM 2 */}
 
-        <section className="shopbot-create-section">
+            <div className="security-feature">
 
-          <p>
-            New customer?
-          </p>
+              <div className="security-feature-icon">
+                <Database size={21} />
+              </div>
 
-          <button
-            type="button"
-            className="shopbot-create-button"
-            onClick={() =>
-              setShowCreateAccount(true)
-            }
-          >
-            <UserPlus size={17} />
+              <div>
+                <h3>
+                  Database Security
+                </h3>
 
-            Create an account
-          </button>
+                <p>
+                  The lab demonstrates how unsafe
+                  query generation and weak authorization
+                  boundaries can expose application data.
+                </p>
+              </div>
+
+            </div>
+
+
+            {/* ITEM 3 */}
+
+            <div className="security-feature">
+
+              <div className="security-feature-icon">
+                <LockKeyhole size={21} />
+              </div>
+
+              <div>
+                <h3>
+                  Prompt Injection
+                </h3>
+
+                <p>
+                  Explore how manipulated instructions
+                  can influence an AI assistant and cause
+                  unsafe application behavior.
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          {/* SECURITY TAGS */}
+
+          <div className="security-tags">
+
+            <span>
+              LLM Security
+            </span>
+
+            <span>
+              Prompt Injection
+            </span>
+
+            <span>
+              Text-to-SQL
+            </span>
+
+            <span>
+              Insecure Output
+            </span>
+
+          </div>
+
+
+          {/* WARNING */}
+
+          <div className="security-note">
+
+            <div className="security-note-icon">
+              !
+            </div>
+
+            <div>
+              <strong>
+                Controlled Training Lab
+              </strong>
+
+              <p>
+                Use this environment only for
+                authorized security learning and
+                testing.
+              </p>
+            </div>
+
+          </div>
 
         </section>
 
       </main>
-
-
-      {/* =================================================
-          CREATE ACCOUNT MODAL
-      ================================================= */}
-
-      {showCreateAccount && (
-        <div
-          className="shopbot-modal-overlay"
-          onMouseDown={(event) => {
-            if (
-              event.target ===
-              event.currentTarget
-            ) {
-              setShowCreateAccount(false);
-            }
-          }}
-        >
-
-          <div className="shopbot-modal">
-
-            <div className="shopbot-modal-header">
-
-              <div>
-                <h2>
-                  Create Demo Account
-                </h2>
-
-                <p>
-                  Create a local training account.
-                </p>
-              </div>
-
-              <button
-                type="button"
-                onClick={() =>
-                  setShowCreateAccount(false)
-                }
-                className="shopbot-modal-close"
-              >
-                ×
-              </button>
-
-            </div>
-
-
-            <form
-              onSubmit={
-                handleCreateAccount
-              }
-            >
-
-              <label htmlFor="new-username">
-                Username
-              </label>
-
-              <input
-                id="new-username"
-                type="text"
-                value={newUsername}
-                onChange={(event) =>
-                  setNewUsername(
-                    event.target.value
-                  )
-                }
-                placeholder="Enter username"
-              />
-
-
-              <label htmlFor="new-password">
-                Password
-              </label>
-
-              <input
-                id="new-password"
-                type="password"
-                value={newPassword}
-                onChange={(event) =>
-                  setNewPassword(
-                    event.target.value
-                  )
-                }
-                placeholder="Enter password"
-              />
-
-
-              <button
-                type="submit"
-                className="shopbot-modal-submit"
-              >
-                Create Account
-              </button>
-
-            </form>
-
-          </div>
-
-        </div>
-      )}
-
-
-      {/* =================================================
-          FLOATING SHOPBOT BUTTON
-      ================================================= */}
-
-      <button
-        type="button"
-        className="shopbot-floating-chat"
-        onClick={handleOpenChat}
-        aria-label="Open ShopBot AI assistant"
-      >
-        <MessageCircle size={25} />
-      </button>
 
     </div>
   );

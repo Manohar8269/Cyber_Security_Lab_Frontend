@@ -20,18 +20,6 @@ export default function Hero() {
       <div className="hero-decoration hero-decoration-two" />
 
       <motion.div
-        className="hero-status"
-        initial={{ opacity: 0, y: 18 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={heroTransition}
-      >
-        <span className="hero-status-dot" />
-        LIVE LAB ENVIRONMENT
-        <span className="hero-status-divider" />
-        FASTAPI · 8000
-      </motion.div>
-
-      <motion.div
         className="hero-icon"
         initial={{ opacity: 0, scale: 0.75, rotate: -8 }}
         animate={{ opacity: 1, scale: 1, rotate: 0 }}
@@ -56,8 +44,6 @@ export default function Hero() {
         transition={{ ...heroTransition, delay: 0.18 }}
       >
         Interactive hands-on environments for exploring LLM vulnerabilities,
-        insecure multi-agent architectures, prompt injection, RAG weaknesses,
-        and broken authorization models.
       </motion.p>
 
       <motion.div
@@ -78,29 +64,7 @@ export default function Hero() {
         </motion.button>
       </motion.div>
 
-      <motion.div
-        className="hero-metrics"
-        initial={{ opacity: 0, y: 14 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ ...heroTransition, delay: 0.3 }}
-      >
-        <div className="hero-metric">
-          <strong>03</strong>
-          <span>Target Apps</span>
-        </div>
-        <div className="hero-metric">
-          <strong>10+</strong>
-          <span>Security Topics</span>
-        </div>
-        <div className="hero-metric">
-          <strong>24/7</strong>
-          <span>Practice Mode</span>
-        </div>
-        <div className="hero-metric">
-          <strong>RAG</strong>
-          <span>Agent + SQL</span>
-        </div>
-      </motion.div>
+      
     </section>
   );
 }
