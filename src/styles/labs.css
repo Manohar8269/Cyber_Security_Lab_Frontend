@@ -307,25 +307,181 @@
 
 @media (max-width: 700px) {
 
+  /* ===============================================
+     LAB SECTION MOBILE
+  =============================================== */
+
   .labs-section {
     width: min(92%, 1400px);
+
+    padding:
+      24px 0 18px;
   }
+
+
+  /* ===============================================
+     LAB HEADING
+  =============================================== */
 
   .labs-heading {
-    align-items: flex-start;
+    display: flex;
+
     flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-bottom:
+      26px;
+
+    text-align: center;
   }
+
+
+  .labs-heading > div {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+  }
+
+
+  /* ===============================================
+     KICKER
+  =============================================== */
+
+  .labs-kicker {
+    font-size:
+      9px;
+
+    letter-spacing:
+      0.14em;
+  }
+
+
+  /* ===============================================
+     HEADING TEXT
+  =============================================== */
+
+  .labs-heading h2 {
+    width: 100%;
+
+    margin:
+      7px 0 8px;
+
+    padding:
+      0 4px;
+
+    font-size:
+      clamp(27px, 8vw, 36px);
+
+    line-height:
+      1.08;
+
+    letter-spacing:
+      -0.03em;
+
+    text-align: center;
+
+    overflow-wrap:
+      break-word;
+  }
+
+
+  /* ===============================================
+     DESCRIPTION
+  =============================================== */
+
+  .labs-heading p {
+    width: 100%;
+
+    max-width:
+      600px;
+
+    padding:
+      0 8px;
+
+    color:
+      var(--text-secondary);
+
+    font-size:
+      clamp(12px, 3.7vw, 14px);
+
+    line-height:
+      1.65;
+
+    text-align: center;
+  }
+
+
+  /* ===============================================
+     LAB COUNT
+  =============================================== */
+
+  .labs-count {
+    padding:
+      7px 10px;
+
+    font-size:
+      9px;
+
+    letter-spacing:
+      0.1em;
+
+    align-self:
+      center;
+  }
+
+
+  /* ===============================================
+     LAB GRID
+  =============================================== */
 
   .labs-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns:
+      1fr;
+
+    gap:
+      16px;
   }
 
-  /* Single lab on mobile */
+
+  /* ===============================================
+     SINGLE LAB CENTER
+  =============================================== */
+
   .labs-grid:has(.lab-card:only-child) {
-    grid-template-columns: 1fr;
+    grid-template-columns:
+      minmax(0, 520px);
+
+    justify-content:
+      center;
   }
+
+
+  /* ===============================================
+     LAB DESCRIPTION
+  =============================================== */
 
   .lab-description {
-    min-height: auto;
+    min-height:
+      auto;
+
+    font-size:
+      13px;
+
+    line-height:
+      1.7;
   }
+
 }
