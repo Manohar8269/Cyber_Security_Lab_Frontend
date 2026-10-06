@@ -280,39 +280,179 @@
 }
 
 @media (max-width: 700px) {
+
+  /* ===============================================
+     HERO MOBILE
+  =============================================== */
+
   .hero {
     width: min(92%, 1120px);
-    padding: 104px 0 48px;
+
+    padding:
+      100px 0 48px;
   }
 
-  .hero-actions {
-    flex-direction: column;
+
+  /* ===============================================
+     STATUS TEXT
+  =============================================== */
+
+  .hero-status {
+    max-width: 94%;
+
+    padding:
+      6px 10px;
+
+    font-size: 9px;
+
+    line-height: 1.4;
+
+    letter-spacing: 0.10em;
+
+    text-align: center;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
   }
+
+
+  .hero-status-divider {
+    height: 12px;
+  }
+
+
+  /* ===============================================
+     HERO ICON
+  =============================================== */
+
+  .hero-icon {
+    width: 72px;
+
+    height: 72px;
+
+    margin:
+      20px auto 18px;
+  }
+
+
+  /* ===============================================
+     MAIN HEADING
+  =============================================== */
+
+  .hero h1 {
+    width: 100%;
+
+    max-width: 100%;
+
+    padding: 0 6px;
+
+    font-size:
+      clamp(34px, 10vw, 48px);
+
+    line-height:
+      1.05;
+
+    letter-spacing:
+      -0.035em;
+
+    word-break:
+      normal;
+
+    overflow-wrap:
+      break-word;
+  }
+
+
+  /* ===============================================
+     DESCRIPTION
+  =============================================== */
+
+  .hero p {
+    width: 100%;
+
+    max-width: 600px;
+
+    padding: 0 8px;
+
+    margin-top: 18px;
+
+    font-size:
+      clamp(13px, 4vw, 16px);
+
+    line-height:
+      1.65;
+  }
+
+
+  /* ===============================================
+     BUTTONS
+  =============================================== */
+
+  .hero-actions {
+    width: 100%;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-top: 25px;
+  }
+
 
   .hero-primary-btn,
   .hero-secondary-btn {
     width: min(100%, 320px);
+
+    min-height: 46px;
+
+    font-size: 13px;
   }
 
+
+  /* ===============================================
+     METRICS
+  =============================================== */
+
   .hero-metrics {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    margin-top: 32px;
   }
+
+
+  .hero-metric {
+    padding:
+      15px 8px;
+  }
+
+
+  .hero-metric strong {
+    font-size:
+      19px;
+  }
+
+
+  .hero-metric span {
+    font-size:
+      9px;
+
+    line-height:
+      1.4;
+
+    letter-spacing:
+      0.06em;
+  }
+
 
   .hero-metric:nth-child(2) {
     border-right: 0;
   }
 
-  .hero-metric:nth-child(-n + 2) {
-    border-bottom: 1px solid var(--border-color);
-  }
-}
 
-@media (prefers-reduced-motion: reduce) {
-  .hero::before,
-  .hero-decoration,
-  .hero-status-dot,
-  .hero-icon::after,
-  .hero-icon-glow {
-    animation: none;
+  .hero-metric:nth-child(-n + 2) {
+    border-bottom:
+      1px solid var(--border-color);
   }
 }
