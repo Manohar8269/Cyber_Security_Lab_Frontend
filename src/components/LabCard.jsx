@@ -83,22 +83,6 @@ export default function LabCard({ lab, index = 0 }) {
         </p>
 
 
-        {/* Meta */}
-        <div className="lab-card-meta">
-
-          <span>
-            SEVERITY:
-            <strong>{lab.severity}</strong>
-          </span>
-
-          <span>
-            LEVEL:
-            <strong>{lab.level}</strong>
-          </span>
-
-        </div>
-
-
         {/* Stack */}
         <div className="lab-card-stack">
           {lab.stack?.map((item) => (

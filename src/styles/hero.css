@@ -158,9 +158,9 @@
 .hero-primary-btn,
 .hero-secondary-btn {
   position: relative;
-  min-height: 48px;
+  min-height: 52px;
   padding: 0 18px;
-  border-radius: 11px;
+  border-radius: 13px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -170,16 +170,29 @@
   border: 1px solid transparent;
   overflow: hidden;
   transition:
-    transform 0.2s ease,
-    border-color 0.2s ease,
-    background 0.2s ease,
-    box-shadow 0.2s ease;
+  transform 0.2s ease,
+  border-color 0.2s ease,
+  background 0.2s ease,
+  box-shadow 0.2s ease;
 }
 
 .hero-primary-btn {
-  color: #ffffff;
-  background: linear-gradient(110deg, var(--button-bg), #ff6970);
-  box-shadow: 0 10px 30px rgba(255, 77, 82, 0.18);
+  color: #061312;
+  background: #19d878;
+  border-color: #19d878;
+
+  box-shadow:
+    0 8px 25px rgba(25, 216, 120, 0.22);
+}
+
+.hero-primary-btn:hover {
+  background: #66ffdf;
+  border-color: #66ffdf;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 30px rgba(25, 216, 120, 0.30);
 }
 
 .hero-primary-btn::after,

@@ -544,6 +544,7 @@
 }
 
 
+
 /* Bottom indicator */
 
 .nav-links a::after,
@@ -1216,18 +1217,19 @@
 
   .nav-links,
   .navbar > .contact-btn {
-    display:
-      none;
+    display: none;
   }
 
   .menu-toggle {
-    display:
-      flex;
+    display: flex;
   }
 
   .mobile-menu {
-    display:
-      flex;
+    display: none;
+  }
+
+  .mobile-menu.open {
+    display: flex;
   }
 }
 
@@ -1356,3 +1358,4 @@
     transition: none;
   }
 }
+

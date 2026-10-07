@@ -4,10 +4,15 @@ import { ShieldCheck } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   const navigate = useNavigate();
   const location = useLocation();
+
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // ================= ACTIVE NAV =================
+  const [activeNav, setActiveNav] = useState(
+    location.pathname.startsWith("/labs") ? "labs" : "home"
+  );
 
   const closeMenu = () => {
     setMenuOpen(false);
@@ -16,6 +21,9 @@ const Navbar = () => {
   // ================= HOME =================
   const handleHome = () => {
     closeMenu();
+
+    // Home ko active karo
+    setActiveNav("home");
 
     // Agar already Home page par ho
     if (location.pathname === "/") {
@@ -28,13 +36,16 @@ const Navbar = () => {
       return;
     }
 
-    // Kisi bhi Lab/About/Contact page se Home par jao
+    // Kisi bhi Lab page se Home par jao
     navigate("/");
   };
 
   // ================= LABS =================
   const handleLabs = () => {
     closeMenu();
+
+    // Labs ko active karo
+    setActiveNav("labs");
 
     // Agar already Home page par ho
     if (location.pathname === "/") {
@@ -50,7 +61,7 @@ const Navbar = () => {
       return;
     }
 
-    // Kisi Lab page se Home par jao
+    // Kisi bhi Lab/About/Contact page se Home par jao
     navigate("/");
 
     // Home load hone ke baad Labs section par scroll
@@ -74,6 +85,10 @@ const Navbar = () => {
         <a
           href="/"
           className="navbar-logo"
+          onClick={(e) => {
+            e.preventDefault();
+            handleHome();
+          }}
         >
           <span className="logo-icon">
             <ShieldCheck size={22} />
@@ -89,8 +104,10 @@ const Navbar = () => {
         {/* ================= DESKTOP NAVIGATION ================= */}
         <div className="nav-links">
 
+          {/* HOME */}
           <a
             href="/"
+            className={activeNav === "home" ? "active" : ""}
             onClick={(e) => {
               e.preventDefault();
               handleHome();
@@ -99,8 +116,10 @@ const Navbar = () => {
             Home
           </a>
 
+          {/* LABS */}
           <a
             href="#labs"
+            className={activeNav === "labs" ? "active" : ""}
             onClick={(e) => {
               e.preventDefault();
               handleLabs();
@@ -114,9 +133,7 @@ const Navbar = () => {
 
         {/* ================= MOBILE MENU BUTTON ================= */}
         <button
-          className={`menu-toggle ${
-            menuOpen ? "active" : ""
-          }`}
+          className={`menu-toggle ${menuOpen ? "active" : ""}`}
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle navigation menu"
           aria-expanded={menuOpen}
@@ -125,18 +142,19 @@ const Navbar = () => {
           <span></span>
           <span></span>
         </button>
+
       </nav>
 
 
       {/* ================= MOBILE NAVIGATION ================= */}
       <div
-        className={`mobile-menu ${
-          menuOpen ? "open" : ""
-        }`}
+        className={`mobile-menu ${menuOpen ? "open" : ""}`}
       >
 
+        {/* MOBILE HOME */}
         <a
           href="/"
+          className={activeNav === "home" ? "active" : ""}
           onClick={(e) => {
             e.preventDefault();
             handleHome();
@@ -146,8 +164,10 @@ const Navbar = () => {
         </a>
 
 
+        {/* MOBILE LABS */}
         <a
           href="#labs"
+          className={activeNav === "labs" ? "active" : ""}
           onClick={(e) => {
             e.preventDefault();
             handleLabs();

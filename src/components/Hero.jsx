@@ -43,7 +43,7 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ ...heroTransition, delay: 0.18 }}
       >
-        Interactive hands-on environments for exploring LLM vulnerabilities,
+        Interactive hands-on environments for exploring LLM vulnerabilities
       </motion.p>
 
       <motion.div
